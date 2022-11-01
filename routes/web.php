@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ChecklistController;
+use App\Http\Controllers\Admin\ChecklistGroupController;
 use App\Http\Controllers\Admin\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,14 +16,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Guest routes
+Route::view('/', 'welcome');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Auth routes
+Auth::routes();
+
+//Admin routes
 Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'is_admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::resource('pages', PageController::class);
+        Route::resource('checklist_groups', ChecklistGroupController::class);
+        Route::resource('checklist_groups.checklists', ChecklistController::class);
+
     });
 });
 
-Route::view('/', 'welcome');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
