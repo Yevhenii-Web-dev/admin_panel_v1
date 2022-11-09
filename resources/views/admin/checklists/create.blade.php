@@ -39,7 +39,7 @@
                                 <div class="card-body row">
                                     <div class="col-12 mb-3">
                                         <label for="formGroupExampleInput" class="form-label">{{ __('Name') }}</label>
-                                        <input type="text" class="form-control" name="name" id="formGroupExampleInput" placeholder="{{ __('Checklist name') }} ">
+                                        <input value="{{ old('name') }}" type="text" class="form-control" name="name" id="formGroupExampleInput" placeholder="{{ __('Checklist name') }} ">
 
                                     </div>
                                     <div class="col-12 text-right">

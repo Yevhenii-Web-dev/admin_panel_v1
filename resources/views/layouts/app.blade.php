@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('build/assets/vendor/fontawesome-free/css/all.min.css') }} " rel="stylesheet" type="text/css">
@@ -19,7 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href=" {{ asset('build/assets/css/sb-admin-2.min.css') }} " rel="stylesheet">
-
+    @livewireStyles
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
 </head>
 
@@ -71,7 +72,12 @@
 <script src="{{ asset('/build/assets/js/sb-admin-2.min.js') }}"></script>
 <!-- Scripts -->
 @vite(['resources/js/app.js'])
+<script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
+@livewireScripts
+<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 
+
+@yield('scripts')
 <!-- Page level plugins -->
 {{--<script src="build/assets/vendor/chart.js/Chart.min.js"></script>--}}
 
